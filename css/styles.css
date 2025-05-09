@@ -1,0 +1,208 @@
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+  }
+  
+  .calculator {
+    background-color: var(--calculator-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* Calculator header */
+  .calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .calculator-header h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+  }
+  
+  .theme-toggle .material-icons {
+    font-size: 24px;
+  }
+  
+  .dark-theme .light_icon,
+  .light_icon {
+    display: none;
+  }
+  
+  .dark-theme .dark_icon,
+  .dark_icon {
+    display: block;
+  }
+  
+  .dark-theme .dark_icon {
+    display: none;
+  }
+  
+  .dark-theme .light_icon {
+    display: block;
+  }
+  
+  /* Calculator history */
+  .calculator-history {
+    padding: 10px 20px;
+    max-height: 60px;
+    overflow-y: auto;
+  }
+  
+  .history-display {
+    color: var(--history-color);
+    font-size: 14px;
+    text-align: right;
+    min-height: 20px;
+  }
+  
+  /* Calculator display */
+  .calculator-display {
+    padding: 20px;
+    background-color: var(--display-bg);
+    border-radius: 10px;
+    margin: 0 20px 20px;
+  }
+  
+  .display {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: right;
+    color: var(--text-color);
+    overflow-x: auto;
+    white-space: nowrap;
+    min-height: 60px;
+  }
+  
+  /* Calculator buttons */
+  .calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 0 20px 20px;
+  }
+  
+  .btn {
+    border: none;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    font-size: 1.25rem;
+    border-radius: 12px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+  }
+  
+  .btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px var(--shadow-color);
+  }
+  
+  .btn-operation {
+    background-color: var(--btn-operation-bg);
+    font-weight: 500;
+  }
+  
+  .btn-equal {
+    background-color: var(--btn-equal-bg);
+    color: var(--btn-equal-color);
+    grid-column: span 1;
+    font-weight: 500;
+  }
+  
+  .btn-clear {
+    background-color: var(--btn-clear-bg);
+    color: var(--btn-clear-color);
+    font-weight: 500;
+  }
+  
+  .btn .material-icons {
+    font-size: 1.25rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .container {
+      padding: 10px;
+    }
+    
+    .calculator-buttons {
+      gap: 8px;
+    }
+    
+    .btn {
+      height: 50px;
+      font-size: 1.1rem;
+    }
+    
+    .display {
+      font-size: 2rem;
+      min-height: 50px;
+    }
+  }
+  
+  /* Fix for the duplicate minus button */
+  .calculator-buttons {
+    grid-template-areas:
+      "clear backspace percent divide"
+      "seven eight nine multiply"
+      "four five six subtract"
+      "one two three add"
+      "sqrt zero decimal equal";
+  }
+  
+  .btn[data-action="clear"] { grid-area: clear; }
+  .btn[data-action="backspace"] { grid-area: backspace; }
+  .btn[data-action="percent"] { grid-area: percent; }
+  .btn[data-action="/"] { grid-area: divide; }
+  .btn[data-action="7"] { grid-area: seven; }
+  .btn[data-action="8"] { grid-area: eight; }
+  .btn[data-action="9"] { grid-area: nine; }
+  .btn[data-action="*"] { grid-area: multiply; }
+  .btn[data-action="4"] { grid-area: four; }
+  .btn[data-action="5"] { grid-area: five; }
+  .btn[data-action="6"] { grid-area: six; }
+  .btn[data-action="-"]:nth-of-type(12) { grid-area: subtract; }
+  .btn[data-action="1"] { grid-area: one; }
+  .btn[data-action="2"] { grid-area: two; }
+  .btn[data-action="3"] { grid-area: three; }
+  .btn[data-action="-"]:nth-of-type(16) { display: none; } /* Hide duplicate minus button */
+  .btn[data-action="sqrt"] { grid-area: sqrt; }
+  .btn[data-action="0"] { grid-area: zero; }
+  .btn[data-action="."] { grid-area: decimal; }
+  .btn[data-action="calculate"] { grid-area: equal; }
