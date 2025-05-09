@@ -34,9 +34,9 @@ function isOperator(char) {
 
 function getOperatorSymbol(operator){
     const symbols = {
-        '+': '+'
-        '-': '-'
-        '*': 'x'
+        '+': '+',
+        '-': '-',
+        '*': 'x',
         '/': '÷'
     }
     return symbols [operator] || operator
